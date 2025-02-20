@@ -1,0 +1,32 @@
+version: 0.0
+os: linux
+
+files:
+  - source: build/libs/studentify-1.0.0.war
+    destination: /opt/tomcat/webapps
+
+hooks:
+  ApplicationStop:
+    - location: script/appstop.sh
+      timeout: 300
+      runas: root
+  
+  BeforeInstall:
+    - location: script/beforeinstall.sh
+      timeout: 300
+      runas: root
+  
+  ApplicationStart:
+    - location: script/appstart.sh
+      timeout: 300
+      runas: root
+
+  # ApplicationStop:
+  #   - location: script/appstop.sh
+  #     timeout: 300
+  #     runas: root
+
+  # ApplicationStop:
+  #   - location: script/appstop.sh
+  #     timeout: 300
+  #     runas: root
